@@ -1,4 +1,4 @@
-The data for dfrme should be in the app/bootstrap.php file. It contains libraries and variables for the whole application, sent through the variable $this->baseClass. In the web/config.php file, CONST values are added and stored.
+The data for dframe should be in the app/bootstrap.php file. It contains libraries and variables for the whole application, sent through the variable $this->baseClass. In the web/config.php file, CONST values are added and stored.
 
 .. code-block:: php
 
