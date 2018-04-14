@@ -8,7 +8,7 @@ Complicated queries sometimes mean building a lot of extremely similar queries. 
 
 prepareQuery($sql, $parms = array())
 ^^^^^^^^^^^^^^
-The basic method for building queries
+The basic method for building queries.
 
 .. code-block:: php
 
@@ -16,7 +16,7 @@ The basic method for building queries
 
 prepareWhere($parms = array())
 ^^^^^^^^^^^^^^
-A method used for filtering queries
+A method used for filtering queries.
 
 
 .. code-block:: php
@@ -49,7 +49,7 @@ Groups the query
 
 prepareLimit($limit, $offset)
 ^^^^^^^^^^^^^^
-Useful method for limiting appendix data when using the paginator
+Useful method for limiting appendix data when using the pagination.
 
 .. code-block:: php
 
@@ -58,7 +58,7 @@ Useful method for limiting appendix data when using the paginator
 
 prepareParms($parms = array())
 ^^^^^^^^^^^^^^
-Binds the parameter to the query
+Binds the parameter to the query.
 
 .. code-block:: php
 
@@ -67,7 +67,7 @@ Binds the parameter to the query
 
 getQuery()
 ^^^^^^^^^^
-Builds the mysql query
+Builds the mysql query.
 
 .. code-block:: php
 
@@ -77,7 +77,7 @@ Builds the mysql query
 
 getParams()
 ^^^^^^^^^^^
-Collects the parameters for binding
+Collects the parameters for binding.
 
 .. code-block:: php
 
