@@ -25,11 +25,11 @@ A method used for filtering queries.
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
 
-You can use it for simpler queries with defined data and filters
+You can use it for simpler queries with defined data and filters.
 
 prepareOrder($orderBy, $sort)
 ^^^^^^^^^^^^^^
-A method used for sorting
+A method used for sorting.
 
 .. code-block:: php
 
