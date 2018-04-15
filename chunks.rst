@@ -14,7 +14,8 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
  class UserController extends \Controller\Controller
  {
  
-     public function index() {
+     public function index() 
+     {
          $userModel = $this->loadModel('User');
          $view = $this->loadView('Index');
          
@@ -27,7 +28,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
                  $order = array('user.id', 'ASC');
                  $where = array();
                  
-                 if(isset($_GET['search']['username'])){
+                 if (isset($_GET['search']['username'])) {
                      $where[] = new WhereChunk('`users`.`username`', '%'.$_POST['search']['username'].'%', 'LIKE');
                  }
       
@@ -48,7 +49,8 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
  
  class UserModel extends \Model\Model
  {
-     public function resources($whereObject, $order = 'user.id', $sort = 'DESC'){
+     public function resources($whereObject, $order = 'user.id', $sort = 'DESC') 
+     {
  
          $query = $this->baseClass->db->prepareQuery('SELECT * FROM user');        
          $query->prepareWhere($whereObject);
