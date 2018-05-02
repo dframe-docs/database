@@ -13,7 +13,7 @@ Basic methods for most queries
 
 .. code-block:: php
 
- $result = $db->pdoQuery('SELECT * FROM users WHERE id = ?', array('1'))->result();
+ $result = $db->pdoQuery('SELECT * FROM users WHERE user_id = ?', array('1'))->result();
 
 Note: It's important to point out that the result() method at the end returns the first row of the table. To receive all rows, you should use results() instead of result()
 
@@ -71,9 +71,9 @@ The most convenient method for updating data in the whole wrapper
 
 .. code-block:: php
 
- $dataArray = array('user_name'=>'Monana', 'user_age'=> '35');
+ $dataArray = array('user_name' => 'Monana', 'user_age'=> '35');
  $where = array('id' => 23);
- $update = $db->update('user', $dataArray, $aWhere)->affectedRows();
+ $update = $db->update('users', $dataArray, $aWhere)->affectedRows();
 
 delete()
 ^^^^^^^^
@@ -121,7 +121,7 @@ Counts the number of rows in the simpler queries
 .. code-block:: php
 
  $count = $db->count('employees');
- $bindWhere = array('user_name' = 'Jack');
+ $bindWhere = array('user_name' => 'Jack');
  $count = $db->count('users', $bindWhere);
 
 showQuery()
