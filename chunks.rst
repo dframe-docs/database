@@ -13,12 +13,16 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
  
  class UserController extends \Controller\Controller
  {
- 
+
      public function index() 
      {
          $userModel = $this->loadModel('User');
          $view = $this->loadView('Index');
-         
+         return $view->render('user/index');
+     }
+     
+     public function list() 
+     {
          switch ($_SERVER['REQUEST_METHOD']) {
              case 'POST':
                  //Some Method
@@ -36,7 +40,6 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
                  return Response::renderJSON(array('users' => $users), 200);
                  break;
          }
-         
          
          return Response::renderJSON(array('code' => 403, 'text' => 'Method Not Allowed'))
              ->headers(array('Allow' => 'GET, POST'))
