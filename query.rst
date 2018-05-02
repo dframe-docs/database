@@ -71,7 +71,7 @@ The most convenient method for updating data in the whole wrapper
 
 .. code-block:: php
 
- $dataArray = array('user_name' => 'Monana', 'user_age'=> '35');
+ $dataArray = array('user_name' => 'Monana', 'user_age' => '35');
  $where = array('id' => 23);
  $update = $db->update('users', $dataArray, $aWhere)->affectedRows();
 
