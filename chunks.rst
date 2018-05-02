@@ -3,25 +3,27 @@ WhereChunk
 
 So-called chunks. Helpful in searching/filtering through data in a database. When we create a database query, we add various limits WHERE with the help of chunks, we can add or remove parameters added to WHERE more easily and using fewer lines of code.
 
+
 .. code-block:: php
 
  namespace Controller;
+ 
  use Dframe\Config;
  use Dframe\Database\WhereChunk;
  use Dframe\Database\WhereStringChunk;
  use Dframe\Router\Response;
  
- class UserController extends \Controller\Controller
+ class UsersController extends \Controller\Controller
  {
-
+ 
      public function index() 
      {
-         $userModel = $this->loadModel('User');
+         $userModel = $this->loadModel('Users');
          $view = $this->loadView('Index');
-         return $view->render('user/index');
+         return $view->render('users/index');
      }
      
-     public function list() 
+     public function lists() 
      {
          switch ($_SERVER['REQUEST_METHOD']) {
              case 'POST':
@@ -29,7 +31,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
                  break;
                  
              case 'GET':
-                 $order = array('user.id', 'ASC');
+                 $order = array('users.user_id', 'ASC');
                  $where = array();
                  
                  if (isset($_GET['search']['username'])) {
@@ -46,16 +48,17 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
              ->status(403);
      }
      
+     
 .. code-block:: php
 
  namespace Model;
  
- class UserModel extends \Model\Model
+ class UsersModel extends \Model\Model
  {
-     public function resources($whereObject, $order = 'user.id', $sort = 'DESC') 
+     public function resources($whereObject, $order = 'users.id', $sort = 'DESC') 
      {
  
-         $query = $this->baseClass->db->prepareQuery('SELECT * FROM user');        
+         $query = $this->baseClass->db->prepareQuery('SELECT * FROM users');        
          $query->prepareWhere($whereObject);
          $query->prepareOrder($order, $sort);
  
