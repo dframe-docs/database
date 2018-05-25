@@ -1,3 +1,9 @@
+.. title:: Query Builder mysql - Dframe/Database
+
+.. meta::
+    :description: Query Builder mysql - dframeframework.com
+    :keywords: dframe, database, pdo, pdo-mysql, query-builder, query
+    
 ====
 Description
 ====
