@@ -1,3 +1,9 @@
+.. title:: Creating queries for the database - PDO wrapper
+
+.. meta::
+    :description: Creating queries for the database - dframeframework.com
+    :keywords: dframe, database, pdo, pdo-mysql, query-builder, query
+    
 ====
 Description
 ====
