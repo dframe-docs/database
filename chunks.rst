@@ -1,3 +1,9 @@
+.. title:: WhereChunk - Create a database query
+
+.. meta::
+    :description: WhereChunk - Helpful in searching/filtering through data in a database
+    :keywords: pdo-mysql, query-builder, query
+    
 WhereChunk
 ^^^^^^^^^^
 
