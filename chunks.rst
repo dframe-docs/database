@@ -61,7 +61,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
  
  class UsersModel extends \Model\Model
  {
-     public function resources($whereObject, $order = 'users.id', $sort = 'DESC') 
+     public function getUsers($whereObject, $order = 'users.id', $sort = 'DESC') 
      {
  
          $query = $this->baseClass->db->prepareQuery('SELECT * FROM users');        
