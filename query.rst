@@ -1,11 +1,11 @@
 .. title:: Creating queries for the database - PDO wrapper
 
 .. meta::
-    :description: Creating queries for the database - dframeframework.com
+    :description: The library is a Wrapper, so a class that calls a main class. Its' purpose is simplifying the handling and creating queries for the database, automating a lot of functions.
     :keywords: dframe, database, pdo, pdo-mysql, query-builder, query
     
 ====
-Description
+Creating queries for the database
 ====
 
 The library is a Wrapper, so a class that calls a main class. Its' purpose is simplifying the handling and creating queries for the database, automating a lot of functions. A list of available methods and their descriptions below.
