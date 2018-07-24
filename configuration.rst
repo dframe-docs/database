@@ -1,8 +1,13 @@
 .. title:: Configuration - PDO wrapper
 
 .. meta::
-    :description: Configuration database - dframeframework.com
+    :description: The data for dframe should be in the app/bootstrap.php file. It contains libraries and variables for the whole application, sent through the variable $this->baseClass.
     :keywords: dframe, database, pdo, pdo-mysql, query-builder, query
+
+    
+====
+Configuration
+====
 
 The data for dframe should be in the app/bootstrap.php file. It contains libraries and variables for the whole application, sent through the variable $this->baseClass. In the web/config.php file, CONST values are added and stored.
 
