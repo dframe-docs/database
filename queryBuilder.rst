@@ -1,14 +1,14 @@
 .. title:: Query Builder mysql - Dframe/Database
 
 .. meta::
-    :description: Query Builder mysql - dframeframework.com
+    :description: Complicated queries sometimes mean building a lot of extremely similar queries
     :keywords: dframe, database, pdo, pdo-mysql, query-builder, query
     
 ====
 Description
 ====
 
-Complicated queries sometimes mean building a lot of extremely similar queries. What if it was possible to build parts of a query in a convenient way?
+Complicated queries sometimes mean building a lot of extremely similar queries. What if it was possible to build parts of a query in a convenient way? Introduce Query Builder mysql.
 
 |table|
 
