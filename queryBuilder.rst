@@ -27,7 +27,7 @@ A method used for filtering queries.
 
 .. code-block:: php
 
- $where = array(new WhereChunk('user_id = ?', ['1'])));
+ $where = [new WhereChunk('user_id = ?', ['1'])];
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
 
@@ -39,7 +39,7 @@ A method used for sorting.
 
 .. code-block:: php
 
- $where = array(new WhereChunk('active > ?', ['1'])));
+ $where = [new WhereChunk('active > ?', ['1'])];
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
  $query->prepareOrder('username', 'ASC');
@@ -62,7 +62,7 @@ Useful method for limiting appendix data when using the pagination.
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareLimit('10', '30');
 
-prepareParms($parms = array())
+prepareParms($parms = [])
 ^^^^^^^^^^^^^^
 Binds the parameter to the query.
 
@@ -87,7 +87,7 @@ Collects the parameters for binding.
 
 .. code-block:: php
 
- $where = array(new WhereChunk('active > ?', ['1']));
+ $where = [new WhereChunk('active > ?', ['1']]);
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
  $query->prepareOrder('username', 'ASC');
