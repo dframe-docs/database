@@ -19,7 +19,7 @@ Basic methods for most queries
 
 .. code-block:: php
 
- $result = $db->pdoQuery('SELECT * FROM users WHERE user_id = ?', array('1'))->result();
+ $result = $db->pdoQuery('SELECT * FROM users WHERE user_id = ?', ['1'])->result();
 
 Note: It's important to point out that the result() method at the end returns the first row of the table. To receive all rows, you should use results() instead of result()
 
@@ -46,7 +46,7 @@ You can use it for simpler queries with defined data and filters
 .. code-block:: php
 
  // Collects rows from the given columns
- $select = $pdo->select('users', array('user_id', 'user_name'))->results();
+ $select = $pdo->select('users', ['user_id', 'user_name'])->results();
 
 insert()
 ^^^^^^^^
@@ -55,7 +55,7 @@ A method that's use only for adding data to the database
 
 .. code-block:: php
 
- $dataArray = array('user_name' => 'Jack');
+ $dataArray = ['user_name' => 'Jack'];
  $insert = $db->insert('users', $dataArray)->getLastInsertId();
 
 InsertBatch()
@@ -65,9 +65,10 @@ Works on a similar basis as insert(), but it gives us the means to add multiple 
 
 .. code-block:: php
 
- $dataArray[] = array('user_name' => 'Eli');
- $dataArray[] = array('user_name' => 'Jack');
- $dataArray[] = array('user_name' => 'Mati');
+ $dataArray = [];
+ $dataArray[] = ['user_name' => 'Eli'];
+ $dataArray[] = ['user_name' => 'Jack'];
+ $dataArray[] = ['user_name' => 'Mati'];
  $insert = $db->insertBatch('users', $dataArray)->getAllLastInsertId();
 
 update()
@@ -77,9 +78,9 @@ The most convenient method for updating data in the whole wrapper
 
 .. code-block:: php
 
- $dataArray = array('user_name' => 'Monana', 'user_age' => '35');
- $where = array('id' => 23);
- $update = $db->update('users', $dataArray, $aWhere)->affectedRows();
+ $dataArray = ['user_name' => 'Monana', 'user_age' => '35'];
+ $where = ['id' => 23];
+ $update = $db->update('users', $dataArray, $where)->affectedRows();
 
 delete()
 ^^^^^^^^
@@ -88,8 +89,9 @@ delete is used for deleting simple data
 
 .. code-block:: php
 
- $aWhere = array('age' => 35);
- $delete = $db->delete('test', $aWhere)->affectedRows();
+ $where = ['age' => 35];
+ $delete = $db->delete('test', $where)->affectedRows();
+ 
 In case of deleting more complicated data, related to greater/lesser/similar we use pdoQuery with recommendation of using whereChunkString.
 
 truncate()
@@ -127,7 +129,7 @@ Counts the number of rows in the simpler queries
 .. code-block:: php
 
  $count = $db->count('employees');
- $bindWhere = array('user_name' => 'Jack');
+ $bindWhere = ['user_name' => 'Jack'];
  $count = $db->count('users', $bindWhere);
 
 showQuery()
@@ -137,7 +139,7 @@ showQuery is a very useful method with big queries: thanks to it, instead of the
 
 .. code-block:: php
 
- results = $db->pdoQuery('SELECT * FROM users')->showQuery();
+ $results = $db->pdoQuery('SELECT * FROM users')->showQuery();
  echo $results;
 
 getLastInsertId()
@@ -221,7 +223,6 @@ Set to false by default during the configuration, it turns debug mode on/off
 .. code-block:: php
 
  $db->setErrorLog(true);     // true/false
-
 
 
 .. |table| advTable:: width="100%"
