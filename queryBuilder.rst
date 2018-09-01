@@ -12,7 +12,7 @@ Complicated queries sometimes mean building a lot of extremely similar queries. 
 
 |table|
 
-prepareQuery($sql, $parms = array())
+prepareQuery($sql, $parms = [])
 ^^^^^^^^^^^^^^
 The basic method for building queries.
 
@@ -20,14 +20,14 @@ The basic method for building queries.
 
  $query = $db->prepareQuery('SELECT * FROM users');
 
-prepareWhere($parms = array())
+prepareWhere($parms = [])
 ^^^^^^^^^^^^^^
 A method used for filtering queries.
 
 
 .. code-block:: php
 
- $where = array(new WhereChunk('user_id = ?', array('1'))));
+ $where = array(new WhereChunk('user_id = ?', ['1'])));
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
 
@@ -39,7 +39,7 @@ A method used for sorting.
 
 .. code-block:: php
 
- $where = array(new WhereChunk('active > ?', array('1'))));
+ $where = array(new WhereChunk('active > ?', ['1'])));
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
  $query->prepareOrder('username', 'ASC');
@@ -69,7 +69,7 @@ Binds the parameter to the query.
 .. code-block:: php
 
  $query = $db->prepareQuery('SELECT * FROM users WHERE id = ?');
- $query->prepareParms(array('1'));
+ $query->prepareParms(['1']);
 
 getQuery()
 ^^^^^^^^^^
@@ -87,7 +87,7 @@ Collects the parameters for binding.
 
 .. code-block:: php
 
- $where = array(new WhereChunk('active > ?', array('1'))));
+ $where = array(new WhereChunk('active > ?', ['1']));
  $query = $db->prepareQuery('SELECT * FROM users');
  $query->prepareWhere($where);
  $query->prepareOrder('username', 'ASC');
