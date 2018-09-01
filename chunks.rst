@@ -12,66 +12,81 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
 
 .. code-block:: php
 
- namespace Controller;
- 
- use Dframe\Config;
- use Dframe\Database\WhereChunk;
- use Dframe\Database\WhereStringChunk;
- use Dframe\Router\Response;
- 
- class UsersController extends \Controller\Controller
- {
- 
-     public function index() 
+     namespace Controller;
+
+     use Dframe\Config;
+     use Dframe\Database\WhereChunk;
+     use Dframe\Database\WhereStringChunk;
+     use Dframe\Router\Response;
+
+     class UsersController extends \Controller\Controller
      {
-         $userModel = $this->loadModel('Users');
-         $view = $this->loadView('Index');
-         return $view->render('users/index');
-     }
      
-     public function lists() 
-     {
-         switch ($_SERVER['REQUEST_METHOD']) {
-             case 'POST':
-                 //Some Method
-                 break;
-                 
-             case 'GET':
-                 $order = array('users.user_id', 'ASC');
-                 $where = array();
-                 
-                 if (isset($_GET['search']['username'])) {
-                     $where[] = new WhereChunk('`users`.`username`', '%'.$_GET['search']['username'].'%', 'LIKE');
-                 }
-      
-                 $users = $userModel->getUsers($where, $order[0], $order[1]);
-                 return Response::renderJSON(array('code' => '200', 'data' => array('users' => array('data' => $users))), 200);
-                 break;
+         /**
+          * @return mixed
+          */
+         public function index()
+         {
+             $userModel = $this->loadModel('Users');
+             $view = $this->loadView('Index');
+             return $view->render('users/index');
          }
          
-         return Response::renderJSON(array('code' => 403, 'message' => 'Method Not Allowed'))
-             ->headers(array('Allow' => 'GET, POST'))
-             ->status(403);
+         /**
+          * @return mixed
+          */
+         public function lists()
+         {
+             switch ($_SERVER['REQUEST_METHOD']) {
+                 case 'POST':
+                     //Some Method
+                     break;
+
+                 case 'GET':
+                     $order = ['users.user_id', 'ASC'];
+                     $where = [];
+
+                     if (isset($_GET['search']['username'])) {
+                         $where[] = new WhereChunk('`users`.`username`', '%' . $_GET['search']['username'] . '%', 'LIKE');
+                     }
+
+                     $users = $userModel->getUsers($where, $order[0], $order[1]);
+                     return Response::renderJSON(['code' => '200', 'data' => ['users' => ['data' => $users]]], 200);
+                     break;
+             }
+
+             return Response::renderJSON(['code' => 403, 'message' => 'Method Not Allowed'])
+                 ->headers(['Allow' => 'GET, POST'])
+                 ->status(403);
+         }
      }
-     
+
      
 .. code-block:: php
 
- namespace Model;
- 
- class UsersModel extends \Model\Model
- {
-     public function getUsers($whereObject, $order = 'users.id', $sort = 'DESC') 
-     {
- 
-         $query = $this->baseClass->db->prepareQuery('SELECT * FROM users');        
-         $query->prepareWhere($whereObject);
-         $query->prepareOrder($order, $sort);
- 
-         $results = $this->baseClass->db->pdoQuery($query->getQuery(), $query->getParams())->results();
- 
-         return $this->methodResult(true, array('data' => $results));
-     }
+    namespace Model;
+    
+    class UsersModel extends \Model\Model
+    {
+    
+        /**
+         * @param        $whereObject
+         * @param string $order
+         * @param string $sort
+         *
+         * @return array
+         */
+        public function getUsers($whereObject, $order = 'users.id', $sort = 'DESC')
+        {
+    
+            $query = $this->baseClass->db->prepareQuery('SELECT * FROM users');
+            $query->prepareWhere($whereObject);
+            $query->prepareOrder($order, $sort);
+    
+            $results = $this->baseClass->db->pdoQuery($query->getQuery(), $query->getParams())->results();
+    
+            return $this->methodResult(true, ['data' => $results]);
+        }
 
 In case of calling $_POST, a condition is added to the basic query. All parameters are automatically binded to PDO, so we don't have to worry about it anymore.
 
@@ -82,4 +97,4 @@ A more interesting class, one that is more often used in practise, is WhereStrin
 
 .. code-block:: php
 
- $where[] = new \Dframe\Database\WhereStringChunk('col_id > ?', array('1'));
+ $where[] = new \Dframe\Database\WhereStringChunk('col_id > ?', ['1']);
