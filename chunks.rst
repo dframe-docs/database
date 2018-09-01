@@ -70,7 +70,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
     {
     
         /**
-         * @param        $whereObject
+         * @param array  $whereObject
          * @param string $order
          * @param string $sort
          *
