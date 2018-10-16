@@ -96,10 +96,10 @@ WhereStringChunk
 A more interesting class, one that is more often used in practise, is WhereStringChunk - it gives us much more tools than the normal WhereChunk.
 
 .. code-block:: php
-
+ $where = [];
  $where[] = new \Dframe\Database\WhereStringChunk('col_id > ?', ['1']);
  
- Or 
+Or 
  
 .. code-block:: php
 
