@@ -79,11 +79,11 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
         public function getUsers($whereObject, $order = 'users.id', $sort = 'DESC')
         {
     
-            $query = $this->baseClass->db->prepareQuery('SELECT * FROM users');
+            $query = $this->db->prepareQuery('SELECT * FROM users');
             $query->prepareWhere($whereObject);
             $query->prepareOrder($order, $sort);
     
-            $results = $this->baseClass->db->pdoQuery($query->getQuery(), $query->getParams())->results();
+            $results = $this->pdoQuery($query->getQuery(), $query->getParams())->results();
     
             return $this->methodResult(true, ['data' => $results]);
         }
