@@ -83,7 +83,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
             $query->prepareWhere($whereObject);
             $query->prepareOrder($order, $sort);
     
-            $results = $this->pdoQuery($query->getQuery(), $query->getParams())->results();
+            $results = $this->db->pdoQuery($query->getQuery(), $query->getParams())->results();
     
             return $this->methodResult(true, ['data' => $results]);
         }
