@@ -27,8 +27,8 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
           */
          public function index()
          {
-             $userModel = $this->loadModel('Users');
-             $view = $this->loadView('Index');
+             $UserModel = $this->loadModel('Users');
+             $View = $this->loadView('Index');
              return $view->render('users/index');
          }
          
@@ -50,7 +50,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
                          $where[] = new WhereChunk('`users`.`username`', '%' . $_GET['search']['username'] . '%', 'LIKE');
                      }
 
-                     $users = $userModel->getUsers($where, $order[0], $order[1]);
+                     $users = $UserModel->getUsers($where, $order[0], $order[1]);
                      return Response::renderJSON(['code' => '200', 'data' => ['users' => ['data' => $users]]], 200);
                      break;
              }
@@ -96,6 +96,7 @@ WhereStringChunk
 A more interesting class, one that is more often used in practise, is WhereStringChunk - it gives us much more tools than the normal WhereChunk.
 
 .. code-block:: php
+
  $where = [];
  $where[] = new \Dframe\Database\WhereStringChunk('col_id > ?', ['1']);
  
