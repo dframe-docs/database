@@ -37,6 +37,8 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
           */
          public function lists()
          {
+             $UserModel = $this->loadModel('Users');
+             
              switch ($_SERVER['REQUEST_METHOD']) {
                  case 'POST':
                      //Some Method
