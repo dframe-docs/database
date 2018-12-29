@@ -67,7 +67,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
                      $data['last_name'] = $user['user_last_name'];
                  }
                       
-                 return Response::renderJSON(['code' => '200', 'data' => ['users' => ['data' => $data]]], 200);
+                 return Response::renderJSON(['code' => 200, 'data' => ['users' => ['data' => $data]]], 200);
                  break;
          }
 
