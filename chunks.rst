@@ -32,9 +32,11 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
      }
          
      /**
+      * List users
+      *
       * @return mixed
       */
-     public function lists()
+     public function users()
      {
          $UserModel = $this->loadModel('Users');
          
