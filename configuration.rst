@@ -36,10 +36,27 @@ The data for dframe should be in the app/bootstrap.php file. It contains librari
          ]
     ];
     
-    $db = new Database($dbConfig, $config);
+
+    
+    /**
+     * Method #1 
+     */  
+    $dsn = [
+        'host' => DB_HOST,
+        'dbname' => DB_DATABASE,
+        'dbtype' => 'mysql'
+    ];
+    $db = new Database($dsn, DB_USER, DB_PASS, $config);
+    
+    /**
+     * Method #2
+     */  
+    //$db = new Database('mysql:host='.DB_HOST.';dbname=' . DB_DATABASE . ';port=3306', DB_USER, DB_PASS, $config);
+
+    
     $db->setErrorLog(false); // Debug
   
- }catch(DBException $e) {
+ }catch(\Exception $e) {
      echo 'The connect can not create: ' . $e->getMessage(); 
      exit();
  }
