@@ -36,8 +36,6 @@ The data for dframe should be in the app/bootstrap.php file. It contains librari
          ]
     ];
     
-
-    
     /**
      * Method #1 
      */  
@@ -52,7 +50,6 @@ The data for dframe should be in the app/bootstrap.php file. It contains librari
      * Method #2
      */  
     //$db = new Database('mysql:host='.DB_HOST.';dbname=' . DB_DATABASE . ';port=3306', DB_USER, DB_PASS, $config);
-
     
     $db->setErrorLog(false); // Debug
   
