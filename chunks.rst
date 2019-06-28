@@ -99,8 +99,7 @@ So-called chunks. Helpful in searching/filtering through data in a database. Whe
          $query = $this->db->prepareQuery('SELECT * FROM users');
          $query->prepareWhere($whereObject);
          $query->prepareOrder($params['order'], $params['sort']);
-         $query->prepareLimit($limit);
-         $query->prepareStart($start);
+         $query->prepareLimit($limit, $start);
     
          $results = $this->db->pdoQuery($query->getQuery(), $query->getParams())->results();
   
