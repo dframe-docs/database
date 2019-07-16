@@ -12,7 +12,7 @@ The library is a Wrapper, so a class that calls a main class. Its' purpose is si
 
 |table|
 
-pdoQuery()
+pdoQuery($sql = '', $bindWhereParam = [])
 ^^^^^^^^^^
 
 Basic methods for most queries
@@ -27,7 +27,7 @@ Note: It's important to point out that the result() method at the end returns th
 
  $results = $db->pdoQuery('SELECT * FROM users')->results();
 
-select()
+select($table = '', $column = [], $arrayWhere = [], $other = '')
 ^^^^^^^^
 
 A method that's used for collection
@@ -48,7 +48,7 @@ You can use it for simpler queries with defined data and filters
  // Collects rows from the given columns
  $select = $pdo->select('users', ['user_id', 'user_name'])->results();
 
-insert()
+insert($table, $data = [])
 ^^^^^^^^
 
 A method that's use only for adding data to the database
@@ -58,7 +58,7 @@ A method that's use only for adding data to the database
  $dataArray = ['user_name' => 'Jack'];
  $insert = $db->insert('users', $dataArray)->getLastInsertId();
 
-InsertBatch()
+insertBatch($table, $data = [], $safeModeInsert = true)
 ^^^^^^^^^^^^^
 
 Works on a similar basis as insert(), but it gives us the means to add multiple items
@@ -71,7 +71,7 @@ Works on a similar basis as insert(), but it gives us the means to add multiple 
  $dataArray[] = ['user_name' => 'Mati'];
  $insert = $db->insertBatch('users', $dataArray)->getAllLastInsertId();
 
-update()
+update($table = '', $data = [], $arrayWhere = [], $other = '')
 ^^^^^^^^
 
 The most convenient method for updating data in the whole wrapper
@@ -82,7 +82,7 @@ The most convenient method for updating data in the whole wrapper
  $where = ['id' => 23];
  $update = $db->update('users', $dataArray, $where)->affectedRows();
 
-delete()
+delete($table, $arrayWhere = [], $other = '')
 ^^^^^^^^
 
 delete is used for deleting simple data
@@ -94,7 +94,7 @@ delete is used for deleting simple data
  
 In case of deleting more complicated data, related to greater/lesser/similar we use pdoQuery with recommendation of using whereChunkString.
 
-truncate()
+truncate($table = '')
 ^^^^^^^^^^
 
 Clears table
@@ -103,7 +103,7 @@ Clears table
 
  $truncate = $db->truncate('users');
 
-drop()
+drop($table = '')
 ^^^^^^
 
 Deletes table
@@ -112,7 +112,7 @@ Deletes table
 
  $drop = $db->drop('users');
 
-describe()
+describe($table = '')
 ^^^^^^^^^^
 
 Shows a list of columns in the database, along with their types
@@ -121,7 +121,7 @@ Shows a list of columns in the database, along with their types
 
  $describe = $db->describe('users');
 
-count()
+count($table = '', $where = '')
 ^^^^^^^
 
 Counts the number of rows in the simpler queries
@@ -132,7 +132,7 @@ Counts the number of rows in the simpler queries
  $bindWhere = ['user_name' => 'Jack'];
  $count = $db->count('users', $bindWhere);
 
-showQuery()
+showQuery($logfile = false)
 ^^^^^^^^^^^
 
 showQuery is a very useful method with big queries: thanks to it, instead of the result()/results() parameter, we use showQuery(), which shows us the Query with the basic variables.
@@ -168,7 +168,7 @@ Returns data in the default array format. Also available xml/json
  $data = $db->results('xml');
  $data = $db->results('json');
 
-result()
+result($row = 0)
 ^^^^^^^^
 
 The same principle as results, and, as previously mentioned, returns only the first row.
@@ -215,7 +215,7 @@ REversing the changes in case of error during start/end
 
  $data = $db->back();
 
-setErrorLog()
+setErrorLog($mode = false)
 ^^^^^^^^^^^^^
 
 Set to false by default during the configuration, it turns debug mode on/off
